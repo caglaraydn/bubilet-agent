@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  bubilet-agent:
+    build: .
+    container_name: bubilet-agent
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./stok_durumu.json:/app/stok_durumu.json
