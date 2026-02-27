@@ -8,6 +8,7 @@ API_URL = os.getenv("API_URL", "https://apiv3.bubilet.com.tr/session/183692/city
 
 # SECURITY: Replace the placeholder below with your actual Bearer token or set it in .env
 AUTH_TOKEN = os.getenv("AUTH_TOKEN", "")
+CF_CLEARANCE_COOKIE = os.getenv("CF_CLEARANCE_COOKIE", "")
 
 # Telegram Configuration
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
@@ -21,5 +22,7 @@ HEADERS = {
     "Authorization": f"Bearer {AUTH_TOKEN}"
 }
 
-CHECK_INTERVAL = 3600 # Seconds (e.g., 1 hour)
+if CF_CLEARANCE_COOKIE:
+    HEADERS["Cookie"] = f"cf_clearance={CF_CLEARANCE_COOKIE}"
 
+CHECK_INTERVAL = 3600 # Seconds (e.g., 1 hour)
